@@ -1,0 +1,23 @@
+{
+  "name": "miniamazon",
+  "version": "1.0.0",
+  "description": "a little baby mini amazon",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leogaley/miniAmazon.git"
+  },
+  "author": "Leo Galey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leogaley/miniAmazon/issues"
+  },
+  "homepage": "https://github.com/leogaley/miniAmazon#readme",
+  "dependencies": {
+    "inquirer": "^4.0.1",
+    "mysql": "^2.15.0"
+  }
+}

@@ -1,0 +1,10 @@
+product_name,department_name,price,stock_quantity
+Football,Sports,25,10
+Basketball,Sports,20,10
+Baseball,Sports,10,10
+Ring,Jewelry,100,5
+Necklace,Jewelry,75,10
+Watch,Jewelry,50,3
+Laptop,Electronics,300,4
+TV,Electronics,250,20
+Phone,Electronics,200,15
