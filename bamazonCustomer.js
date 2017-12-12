@@ -26,6 +26,7 @@ function placeOrder(items) {
 		type:'input',
 		name:'quantity',
 		message:'What quantity would you like to buy?',
+		validate: validateQuantity
 	},
 	{
 		type:'input',
@@ -35,7 +36,7 @@ function placeOrder(items) {
 
 	]).then(function (input) {
 
-		getDatabaseInfo(input.item,input.quantity,input.name);
+		getDatabaseInfo(input.item,parseInt(input.quantity),input.name);
 		
 	
 	});
@@ -100,8 +101,14 @@ function submitOrder(item,department,price,quantity,name) {
 	connection.query(sqlQuery,order,function(error,results,fields){
 		if (error) throw error;
 
-		console.log(results);
+		//console.log(results);
+		console.log('Order #' + results.insertId + ' placed for $' + price*quantity);
+
 		connection.end();
 	})
 }
 
+function validateQuantity (quantity){
+	return !isNaN(parseInt(quantity)) || 'Order quantity must be a number';
+
+}
