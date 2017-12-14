@@ -11,21 +11,21 @@ var items = [];
 var departments = [];
 connection.connect();
 
+//get departments to use as options when adding a new item
 getDepartmentArray();
 
 function menuOptions() {
 
-	
 	inquirer.prompt([
 	{
 		type:'list',
 		name:'task',
 		message:'\nManager View: Please make a selection.\n',
-		choices: ['VIEW PRODUCTS FOR SALE','VIEW LOW INVENTORY','ADD TO INVENTORY','ADD NEW PRODUCT','EXIT'] //SQL/NPM return item list
+		choices: ['VIEW PRODUCTS FOR SALE','VIEW LOW INVENTORY','ADD TO INVENTORY','ADD NEW PRODUCT','EXIT'] 
 	}
 
 	]).then(function (input) {
-
+		//routing
 		switch (input.task) {
 		case 'VIEW PRODUCTS FOR SALE':
 			viewAllInventory();
@@ -44,9 +44,7 @@ function menuOptions() {
 		default:
 			viewAllInventory();
 		}
-	
 	});
-
 };
 
 function viewAllInventory(){
@@ -72,35 +70,31 @@ function addInventory() {
 		type:'list',
 		name:'item',
 		message:'Please select an item',
-		choices: items
+		choices: items //array
 	},
 	{
 		type:'input',
 		name:'quantity',
 		message:'Please enter the quantity to add.',
+		//parse into integer but allow (in case of a float).  Still must be a number according to validateNumber function
 		filter: function(quantity){
 			return parseInt(quantity);
 		},
 		validate : validateNumber
-
 	}
-
 	]).then(function (input) {
 		var item = input.item;
 		var quantity = input.quantity;
 
 		var sqlQuery = "UPDATE products SET stock_quantity = stock_quantity + ? WHERE product_name = ?;";
 		var data = [quantity, item];
-		
+		//update database
 		connection.query(sqlQuery,data,function(error,results,fields){
 			if (error) throw error;
 			console.log('Inventory added');
 			menuOptions();
 		})
-		
-	
 	});
-
 };
 
 
@@ -135,7 +129,6 @@ function addProduct() {
 		message:'Please select department',
 		choices: departments
 	}
-
 	]).then(function (input) {
 		var itemName = input.itemName;
 		var quantity = input.initialQuantity;
@@ -143,6 +136,7 @@ function addProduct() {
 		var department = input.department;
 		var data = [itemName,department,quantity,price];
 		var sqlQuery = 'INSERT INTO products (product_name,department_name,stock_quantity,price) VALUES (?,?,?,?);';
+		//add product to database, pass in query as string, item data as array.  
 		connection.query(sqlQuery,data,function(error,results,fields){
 			if (error) throw error;
 			console.log('\nItem ' + input.itemName + ' added to database.\n');
@@ -153,35 +147,35 @@ function addProduct() {
 
 };
 
+//get items for use as choices when adding inventory
 function getItemArray() {
 	//var items = [];
 	connection.query('SELECT product_name FROM products WHERE stock_quantity > 0', function (error, results, fields) {
   		if (error) throw error;
  		
- 		
  		for (i=0;i<results.length;i++){
  			items.push(results[i].product_name);
- 			//console.log(results[i].product_name);
- 		}	
- 		menuOptions(items);
+ 		}
+ 		//done gathering data, start the app	
+ 		menuOptions();
  		
  	});
 }
 
+//get departments for use as choices when modifying inventory
 function getDepartmentArray(){
 	connection.query('SELECT department_name FROM departments;', function (error, results, fields) {
   		if (error) throw error;
- 		
- 		
+ 	
  		for (i=0;i<results.length;i++){
  			departments.push(results[i].department_name);
- 			//console.log(results[i].product_name);
  		}	
  		getItemArray();
  		
  	});
 }
 
+//if its a number, return true.  otherwise return the string (which halts the user)
 function validateNumber (quantity){
 	return !isNaN(parseInt(quantity)) || 'Must be a number';
 

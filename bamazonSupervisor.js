@@ -1,5 +1,6 @@
 var inquirer = require("inquirer");
 var mysql = require("mysql");
+//for displaying sql results in organized table in console. I THINK the reason this doesn't work when set as a variable (like var table = require...) has something to do with this being a method added to existing console object
 require("console.table");
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -7,23 +8,23 @@ var connection = mysql.createConnection({
   password : 'NYUDuck',
   database : 'bamazon'
 });
+
 connection.connect();
 
 menuOptions();
 
 function menuOptions() {
 
-	
 	inquirer.prompt([
 	{
 		type:'list',
 		name:'task',
 		message:'\nSupervisor View: Please make a selection.\n',
-		choices: ['VIEW PRODUCT SALES BY DEPARTMENT','CREATE NEW DEPARTMENT','EXIT'] //SQL/NPM return item list
+		choices: ['VIEW PRODUCT SALES BY DEPARTMENT','CREATE NEW DEPARTMENT','EXIT'] 
 	}
 
 	]).then(function (input) {
-
+		//routing
 		switch (input.task) {
 		case 'VIEW PRODUCT SALES BY DEPARTMENT':
 			viewSalesByDepartment();

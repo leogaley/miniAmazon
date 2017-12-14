@@ -60,7 +60,7 @@ CREATE TABLE orders (
 
 Here is what the app looks like from console.
 
-bamazonCustomer.js
+#### bamazonCustomer.js
 
 1) Runs through options for making a purchase, pulled from [products] table. 
 ![Customer View](/Screens/1.JPG?raw=true "Customer View")
@@ -68,7 +68,7 @@ bamazonCustomer.js
 2) Completed Purchase.  [orders] and [products] tables updated.  
 ![Completed Order](/Screens/2.JPG?raw=true "Completed Order")
 
-bamazonManager.js
+#### bamazonManager.js
 
 1) Here are all the manager view options.  
 ![Manager View](/Screens/3.JPG?raw=true "Manager View")
@@ -86,7 +86,7 @@ bamazonManager.js
 ![Add New Product](/Screens/7.JPG?raw=true "Add New Product")
 ![Add New Product](/Screens/7b.JPG?raw=true "Add New Product")
 
-bamazonSupervisor.js
+#### bamazonSupervisor.js
 
 1) VIEW PRODUCT SALES BY DEPARTMENT / ADD NEW DEPARTMENT - combines [orders] and [departments] tables to create a table showing profit per department (one row per department).
 2) ADD NEW DEPARTMENT - create new department.  This is show after the product sales table. 
@@ -97,4 +97,4 @@ bamazonSupervisor.js
 
 If I were to continue adding to this - I would refactor to more appropriately use the IDs (product, department, order) more appropriately as a primary key in relational database.  The way this exists now, it is relying pretty heavily on name strings.  Which are not required to be unique.  So in production that would be an issue.  
 
-
+Also, there is validation for entry of all numbers (as integers or floats), but there are a variety of other data validations that could be done (special characters in naming strings, for example)
