@@ -19,17 +19,18 @@ Here is what the app looks like from console.
 
 bamazonCustomer.js
 
-1) Runs through options for making a purchase. 
+1) Runs through options for making a purchase, pulled from [products] table. 
 ![Customer View](/Screens/1.JPG?raw=true "Customer View")
 
-2) Runs through options for making a purchase. 
+2) Completed Purchase.  [orders] and [products] tables updated.  
 ![Completed Order](/Screens/2.JPG?raw=true "Completed Order")
 
 bamazonManager.js
 
-1) Manager view options.
+1) Here are all the manager view options.  
 ![Completed Order](/Screens/3.JPG?raw=true "Completed Order")
 
+2) Show entire [products table], from database using mysql and console.table.  
 ![Completed Order](/Screens/4.JPG?raw=true "Completed Order")
 
 ![Completed Order](/Screens/5.JPG?raw=true "Completed Order")
