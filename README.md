@@ -13,6 +13,49 @@ inquirer
 mysql
 ```
 
+Also required for this app is a connection to database with tables for: 
+```
+products
+orders
+departments
+```
+
+Here is the SQL used to initialize the tables and databse:
+
+```
+DROP DATABASE bamazon;
+
+CREATE DATABASE bamazon;
+
+USE bamazon;
+
+CREATE TABLE products (
+	item_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(30),
+    department_name VARCHAR(30),
+    price FLOAT(6,2),
+    stock_quantity INT(6)
+
+);
+
+CREATE TABLE departments (
+	dept_id INT PRIMARY KEY AUTO_INCREMENT,
+    department_name VARCHAR(30),
+    overhead FLOAT(6,2)
+
+);
+
+CREATE TABLE orders (
+	order_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(30),
+    department_name VARCHAR(30),
+    price FLOAT(6,2),
+    quantity INT(6),
+    customer_name VARCHAR(50)
+);
+
+```
+
 ### Screenshots
 
 Here is what the app looks like from console.
@@ -28,82 +71,30 @@ bamazonCustomer.js
 bamazonManager.js
 
 1) Here are all the manager view options.  
-![Completed Order](/Screens/3.JPG?raw=true "Completed Order")
+![Manager View](/Screens/3.JPG?raw=true "Manager View")
 
-2) Show entire [products table], from database using mysql and console.table.  
-![Completed Order](/Screens/4.JPG?raw=true "Completed Order")
+2) VIEW PRODUCTS FOR SALE - Show entire [products], from database using mysql and console.table.  
+![View Products for Sale](/Screens/4.JPG?raw=true "View Products for Sale")
 
-![Completed Order](/Screens/5.JPG?raw=true "Completed Order")
+3) VIEW LOW INVENTORY - Show items w/inventory less than 5. Below the table is just the original options again, to choose something else.  
+![Low Inventory](/Screens/5.JPG?raw=true "Low Inventory")
 
-![Completed Order](/Screens/6.JPG?raw=true "Completed Order")
+4) ADD TO INVENTORY - Showing before and after of adding products (quantity) to inventory.  Note the quantity of basketballs in this example.  
+![Add to Inventory](/Screens/6.JPG?raw=true "Add to Inventory")
 
-![Completed Order](/Screens/7.JPG?raw=true "Completed Order")
+5) ADD NEW PRODUCT - Showing before and after of adding a new item.
+![Add New Product](/Screens/7.JPG?raw=true "Add New Product")
+![Add New Product](/Screens/7b.JPG?raw=true "Add New Product")
 
-![Completed Order](/Screens/8.JPG?raw=true "Completed Order")
+bamazonSupervisor.js
 
+1) VIEW PRODUCT SALES BY DEPARTMENT / ADD NEW DEPARTMENT - combines [orders] and [departments] tables to create a table showing profit per department (one row per department).
+2) ADD NEW DEPARTMENT - create new department.  This is show after the product sales table. 
 ![Completed Order](/Screens/9.JPG?raw=true "Completed Order")
 
 
+### Other notes / Limitations
 
-And repeat
+If I were to continue adding to this - I would refactor to more appropriately use the IDs (product, department, order) more appropriately as a primary key in relational database.  The way this exists now, it is relying pretty heavily on name strings.  Which are not required to be unique.  So in production that would be an issue.  
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
 
