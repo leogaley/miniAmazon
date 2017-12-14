@@ -20,7 +20,7 @@ Here is what the app looks like from console.
 bamazonCustomer.js
 
 
-![Customer View](/screens/1.jpg?raw=true "Customer View Title")
+![Customer View](/Screens/1.jpg?raw=true "Customer View Title")
 
 
 And repeat
