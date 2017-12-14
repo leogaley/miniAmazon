@@ -19,8 +19,29 @@ Here is what the app looks like from console.
 
 bamazonCustomer.js
 
+1) Runs through options for making a purchase. 
+![Customer View](/Screens/1.JPG?raw=true "Customer View")
 
-![Customer View](/Screens/1.JPG?raw=true "Customer View Title")
+2) Runs through options for making a purchase. 
+![Completed Order](/Screens/2.JPG?raw=true "Completed Order")
+
+bamazonManager.js
+
+1) Manager view options.
+![Completed Order](/Screens/3.JPG?raw=true "Completed Order")
+
+![Completed Order](/Screens/4.JPG?raw=true "Completed Order")
+
+![Completed Order](/Screens/5.JPG?raw=true "Completed Order")
+
+![Completed Order](/Screens/6.JPG?raw=true "Completed Order")
+
+![Completed Order](/Screens/7.JPG?raw=true "Completed Order")
+
+![Completed Order](/Screens/8.JPG?raw=true "Completed Order")
+
+![Completed Order](/Screens/9.JPG?raw=true "Completed Order")
+
 
 
 And repeat
