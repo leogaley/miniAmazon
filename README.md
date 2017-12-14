@@ -19,9 +19,9 @@ Here is what the app looks like from console.
 
 bamazonCustomer.js
 
-```
+
 ![Customer View](1.jpg?raw=true "Customer View Title")
-```
+
 
 And repeat
 
